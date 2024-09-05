@@ -2,9 +2,17 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in rodiff.gemspec
 gemspec
 
-gem "rake", "~> 13.0"
+gem "ffi", "~> 1.17"
 
-gem "rubocop", "~> 1.21"
+group :development, :test do
+  gem "rake", "~> 13.0"
+  gem "rspec", "~> 3.12"
+end
+
+group :development do
+  gem "rubocop", "~> 1.65", require: false
+  gem "rubocop-rake", require: false
+  gem "rubocop-rspec", require: false
+end
