@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     rodiff (0.1.0)
-      ffi (~> 1.17)
 
 GEM
   remote: https://rubygems.org/
@@ -16,10 +15,6 @@ GEM
       bigdecimal
       rexml
     diff-lcs (1.5.1)
-    ffi (1.17.0)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
     hashdiff (1.1.1)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
@@ -78,7 +73,6 @@ PLATFORMS
   x86_64-mingw32
 
 DEPENDENCIES
-  ffi (~> 1.17)
   rake (~> 13.0)
   rodiff!
   rspec (~> 3.12)
