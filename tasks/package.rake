@@ -76,40 +76,43 @@ end
 RODIFF_GEMSPEC = Bundler.load_gemspec("rodiff.gemspec")
 
 # prepend the download task before the Gem::PackageTask tasks
+desc "Build all the packages"
 task package: :download
 
 gem_path = Gem::PackageTask.new(RODIFF_GEMSPEC).define
 desc "Build the ruby gem"
 task "gem:ruby" => [gem_path]
 
-exepaths = []
+exe_paths = []
 Rodiff::Odiff::PLATFORMS.each do |platform, filename|
   RODIFF_GEMSPEC.dup.tap do |gemspec|
-    exedir = File.join(gemspec.bindir, platform) # "exe/x86_64-linux"
-    exepath = File.join(exedir, "odiff")         # "exe/x86_64-linux/odiff"
-    exepaths << exepath
+    exe_dir = File.join(gemspec.bindir, platform) # "exe/x86_64-linux"
+    exe_path = File.join(exe_dir, "odiff") # "exe/x86_64-linux/odiff"
+    exe_paths << exe_path
 
     # modify a copy of the gemspec to include the native executable
     gemspec.platform = platform
-    gemspec.files += [exepath, "LICENSE-DEPENDENCIES"]
+    gemspec.files += [exe_path, "LICENSE-DEPENDENCIES"]
 
     # create a package task
     gem_path = Gem::PackageTask.new(gemspec).define
     desc "Build the #{platform} gem"
     task "gem:#{platform}" => [gem_path]
 
-    directory exedir
-    file exepath => [exedir] do
+    directory exe_dir
+    file exe_path => [exe_dir] do
       release_url = odiff_download_url(filename)
-      warn "Downloading #{exepath} from #{release_url} ..."
+      warn "Downloading #{exe_path} from #{release_url} ..."
 
       URI.parse(release_url).open do |stream|
-        File.binwrite(exepath, stream.read)
+        File.binwrite(exe_path, stream.read)
       end
-      FileUtils.chmod("u=rwx,go=rx", exepath, verbose: true)
+      FileUtils.chmod("u=rwx,go=rx", exe_path, verbose: true)
     end
   end
 end
 
 desc "Download all odiff binaries"
-task "download" => exepaths
+task "download" => exe_paths
+
+CLOBBER.add(exe_paths.map { |p| File.dirname(p) })
