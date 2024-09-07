@@ -9,23 +9,21 @@ Gem::Specification.new do |spec|
   spec.email = ["ryancyq@gmail.com"]
 
   spec.summary     = "A ruby wrapper for odiff"
-  spec.description = ""
   spec.homepage    = "https://github.com/ryancyq/rodiff"
   spec.license     = "MIT"
 
   spec.metadata = {
     "rubygems_mfa_required" => "true",
     "allowed_push_host"     => "https://rubygems.org",
-    "homepage_uri"          => spec.homepage,
-    "source_code_uri"       => spec.homepage,
-    "changelog_uri"         => "https://github.com/ryancyq/rodiff/blob/main/CHANGELOG.md"
+    "changelog_uri"         => "https://github.com/ryancyq/rodiff/blob/main/CHANGELOG.md",
+    "homepage_uri"          => spec.homepage
   }
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
     ls.readlines("\x0", chomp: true).select do |f|
-      f.start_with?(*%w[lib/ sig/ LICENSE README.md])
+      f.start_with?(*%w[lib/ exe/ LICENSE README.md])
     end
   end
 
