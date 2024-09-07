@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = "~> 3.0"
+  spec.required_rubygems_version = ">= 3.2.0" # for Gem::Platform#match_gem?
+
   spec.requirements << "odiff #{Rodiff::ODIFF_VERSION}"
-  spec.add_dependency "thor", "~> 1.3.2"
 end

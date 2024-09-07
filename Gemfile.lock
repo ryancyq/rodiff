@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     rodiff (0.1.0)
-      thor (~> 1.3.2)
 
 GEM
   remote: https://rubygems.org/
@@ -59,7 +58,6 @@ GEM
     rubocop-rspec (3.0.4)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
-    thor (1.3.2)
     unicode-display_width (2.5.0)
     vcr (6.3.1)
       base64
@@ -82,7 +80,6 @@ DEPENDENCIES
   rubocop (~> 1.65)
   rubocop-rake
   rubocop-rspec
-  thor (= 1.3.2)
   vcr (~> 6.3)
   webmock (~> 3.23)
 
