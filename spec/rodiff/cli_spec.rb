@@ -9,8 +9,9 @@ RSpec.describe Rodiff::CLI do
   describe "#platform" do
     let(:platform) { described_class.platform }
 
-    it "is <os>-<cpu> without version" do
-      expect(platform).to eq "#{Gem::Platform.local.cpu}-#{Gem::Platform.local.os}"
+    machine = "#{Gem::Platform.local.cpu}-#{Gem::Platform.local.os}"
+    it "is #{machine} without version" do
+      expect(platform).to eq machine
     end
   end
 
