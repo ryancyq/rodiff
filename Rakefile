@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler/gem_tasks"
-require "rubocop/rake_task"
 
-RuboCop::RakeTask.new
-
-task default: :rubocop
+Dir[File.expand_path("tasks/*.rake", __dir__)].each do |task|
+  load task
+end

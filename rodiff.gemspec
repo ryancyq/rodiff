@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = "~> 3.0"
   spec.requirements << "odiff #{Rodiff::ODIFF_VERSION}"
+  spec.add_dependency "thor", "~> 1.3.2"
 end
