@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "lib/rodiff/version"
+require_relative "lib/rodiff/odiff"
 
 Gem::Specification.new do |spec|
   spec.name = "rodiff"
@@ -34,5 +35,5 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = "~> 3.0"
   spec.required_rubygems_version = ">= 3.2.0" # for Gem::Platform#match_gem?
 
-  spec.requirements << "odiff #{Rodiff::ODIFF_VERSION}"
+  spec.requirements << "odiff, #{Rodiff::Odiff::VERSION}"
 end
