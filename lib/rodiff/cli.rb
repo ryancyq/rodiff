@@ -55,7 +55,7 @@ module Rodiff
       def supported_platform?(platform = nil)
         return Gem::Platform.match_gem?(Gem::Platform.new(platform), "rodiff") unless platform.nil?
 
-        Rodiff::Odiff::NATIVE_PLATFORMS.keys.any? { |p| Gem::Platform.match_gem?(Gem::Platform.new(p), "rodiff") }
+        Rodiff::Odiff::PLATFORMS.keys.any? { |p| Gem::Platform.match_gem?(Gem::Platform.new(p), "rodiff") }
       end
 
       def executable(exe_path: DEFAULT_DIR)

@@ -5,7 +5,7 @@ module Rodiff
     VERSION = "v3.1.1"
 
     # rubygems platform name => upstream release filename
-    NATIVE_PLATFORMS = {
+    PLATFORMS = {
       "arm64-darwin"   => "odiff-macos-arm64.exe",
       "x64-mingw32"    => "odiff-windows-x64.exe",
       "x64-mingw-ucrt" => "odiff-windows-x64.exe",

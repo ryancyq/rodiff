@@ -3,7 +3,7 @@
 #
 #  Rake tasks to manage native gem packages with binary executables from dmtrKovalenko/odiff
 #
-#  The native platform gems (defined by Rodiff::Odiff::NATIVE_PLATFORMS) will each contain
+#  The native platform gems (defined by Rodiff::Odiff::PLATFORMS) will each contain
 #  two files in addition to what the vanilla ruby gem contains:
 #
 #     exe/
@@ -83,7 +83,7 @@ desc "Build the ruby gem"
 task "gem:ruby" => [gem_path]
 
 exepaths = []
-Rodiff::Odiff::NATIVE_PLATFORMS.each do |platform, filename|
+Rodiff::Odiff::PLATFORMS.each do |platform, filename|
   RODIFF_GEMSPEC.dup.tap do |gemspec|
     exedir = File.join(gemspec.bindir, platform) # "exe/x86_64-linux"
     exepath = File.join(exedir, "odiff")         # "exe/x86_64-linux/odiff"
