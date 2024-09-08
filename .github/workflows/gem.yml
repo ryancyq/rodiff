@@ -60,6 +60,7 @@ jobs:
           name: gem-ruby
           path: pkg
       - run: "gem install pkg/rodiff-*.gem"
+      - run: "rodiff --help"
       - run: "rodiff 2>&1 | fgrep 'ERROR: Cannot find the rodiff executable'"
 
   linux-install:
