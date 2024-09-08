@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rodiff/odiff"
+
 module Rodiff
   class CLI
     DEFAULT_DIR = File.expand_path(File.join(__dir__, "..", "..", "exe"))
