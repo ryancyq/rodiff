@@ -85,7 +85,8 @@ module Rodiff
         raise InstallDirectoryNotFound, local_install_dir unless File.directory?(local_install_dir)
 
         warn "NOTE: using #{LOCAL_INSTALL_DIR_ENV} to find odiff executable: #{local_install_dir}"
-        File.expand_path(File.join(local_install_dir, "odiff"))
+        exe_files = File.expand_path(File.join(local_install_dir, "odiff{,.exe}"))
+        Dir.glob(exe_files).first
       end
 
       def expand_bundled_dir(bundled_dir)

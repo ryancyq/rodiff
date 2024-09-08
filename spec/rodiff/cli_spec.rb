@@ -16,11 +16,12 @@ RSpec.describe Rodiff::CLI do
   end
 
   describe "#executable" do
+    let(:exe_filename) { "odiff" }
     let(:tmp_exe_dir) do
       lambda do |platform, &block|
         Dir.mktmpdir do |dir|
           FileUtils.mkdir(File.join(dir, platform))
-          path = File.join(dir, platform, "odiff")
+          path = File.join(dir, platform, exe_filename)
           FileUtils.touch(path)
           block.call(dir, path)
         end
@@ -30,7 +31,7 @@ RSpec.describe Rodiff::CLI do
     let(:local_odiff_dir) do
       lambda do |&block|
         Dir.mktmpdir do |dir|
-          path = File.join(dir, "odiff")
+          path = File.join(dir, exe_filename)
           FileUtils.touch(path)
           block.call(dir, path)
         end
@@ -110,6 +111,23 @@ RSpec.describe Rodiff::CLI do
         described_class::InstallDirectoryNotFound,
         "ODIFF_INSTALL_DIR is set to /does/not/exist, but that directory does not exist."
       )
+    end
+
+    context "with odiff.exe filename" do
+      let(:exe_filename) { "odiff.exe" }
+
+      it "returns the executable in ODIFF_INSTALL_DIR" do
+        local_odiff_dir.call do |install_dir, exe|
+          allow(described_class).to receive(:warn)
+          allow(ENV).to receive(:fetch).and_return(install_dir)
+
+          expect(described_class.executable).to eq exe
+          expect(described_class).to have_received(:warn).with(
+            %r{NOTE: using ODIFF_INSTALL_DIR to find odiff executable:}
+          )
+          expect(ENV).to have_received(:fetch).with("ODIFF_INSTALL_DIR", nil)
+        end
+      end
     end
   end
 end
