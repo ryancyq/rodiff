@@ -1,7 +1,11 @@
 # rodiff
 
-A ruby wrapper for [Odiff](https://github.com/dmtrKovalenko/odiff), an image comparison tool written in OCamel.
+[![Version][rubygems_badge]][rubygems]
+[![CI][ci_badge]][ci_workflows]
+[![Coverage][coverage_badge]][coverage]
+[![Maintainability][maintainability_badge]][maintainability]
 
+A ruby wrapper for [Odiff](https://github.com/dmtrKovalenko/odiff), an image comparison tool written in OCamel.
 
 ## Motivation
 
@@ -94,3 +98,16 @@ See https://bundler.io/man/bundle-config.1.html for more information.
 
 Rodiff is released under the [MIT License](https://opensource.org/licenses/MIT).
 Odiff is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at [https://github.com/ryancyq/rodiff](https://github.com/ryancyq/rodiff).
+
+[rubygems_badge]: https://img.shields.io/gem/v/rodiff.svg
+[rubygems]: https://rubygems.org/gems/rodiff
+[ci_badge]: https://github.com/ryancyq/rodiff/actions/workflows/ci.yml/badge.svg
+[ci_workflows]: https://github.com/ryancyq/rodiff/actions/workflows/ci.yml
+[coverage_badge]: https://codecov.io/gh/ryancyq/rodiff/graph/badge.svg?token=SYR7FSDWT5
+[coverage]: https://codecov.io/gh/ryancyq/rodiff
+[maintainability_badge]: https://api.codeclimate.com/v1/badges/d5b1002a1a7162f86a7a/maintainability
+[maintainability]: https://codeclimate.com/github/ryancyq/rodiff/maintainability
