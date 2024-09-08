@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
 
-VERSION=$1
+VERSION=$(./bin/bump-version "$1")
 
-if [ -z "$VERSION" ]; then
-  echo "Usage: $0 <version>"
-  exit 1
-fi
-
-printf "# frozen_string_literal: true\n\nmodule Rodiff\n  VERSION = \"$VERSION\"\nend\n" > ./lib/rodiff/version.rb
-bundle
 git add Gemfile.lock lib/rodiff/version.rb
 git commit -S -m "Bump version for $VERSION"
 git push
