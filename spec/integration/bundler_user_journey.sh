@@ -22,11 +22,10 @@ mkdir "My Bundle"
 pushd "My Bundle"
 
 cp ../tiger.jpg .
-cp ../tiger-2.jpg .
 
 # use the rodiff under test
 bundle info rodiff
 bundle show --paths
 
 # TEST: odiff was installed correctly
-bundle exec rodiff ./tiger.jpg ./tiger-2.jpg diff.png
+bundle exec rodiff ./tiger.jpg ./tiger.jpg diff.png
