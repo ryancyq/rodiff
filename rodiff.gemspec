@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = "~> 3.0"
+  spec.required_ruby_version = ">= 2.7"
   spec.required_rubygems_version = ">= 3.2.0" # for Gem::Platform#match_gem?
 
   spec.requirements << "odiff, #{Rodiff::Odiff::VERSION}"

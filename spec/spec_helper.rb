@@ -105,4 +105,4 @@ RSpec.configure do |config|
 end
 
 # Load everything from spec/support
-Dir[File.expand_path("support/**/*.rb", __dir__)].each { |rb| require(rb) }
+Dir[File.expand_path("support/**/*.rb", __dir__)].sort.each { |rb| require(rb) }
