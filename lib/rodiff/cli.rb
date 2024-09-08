@@ -36,6 +36,11 @@ module Rodiff
                 bundle install
 
             See `bundle lock --help` output for details.
+
+            If you're still seeing this message after taking those steps, try running
+            `bundle config` and ensure `force_ruby_platform` isn't set to `true`. See
+            https://github.com/ryancyq/rodiff#check-bundle_force_ruby_platform
+            for more details.
           MSG
           )
       end
