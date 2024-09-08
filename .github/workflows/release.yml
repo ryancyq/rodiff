@@ -1,6 +1,6 @@
 name: Release New Version
 concurrency:
-  group: "${{github.workflow}}-${{github.ref}}"
+  group: release-new-version
   cancel-in-progress: true
 on:
   workflow_dispatch:
@@ -9,6 +9,9 @@ on:
         description: Gem Version
         required: true
         type: string
+
+env:
+  GEM_VERSION: ${{ inputs.version }}
 
 jobs:
   rubygems:
@@ -29,16 +32,32 @@ jobs:
           ruby-version: 3.3
           bundler: latest
 
-      - name: Set git remote
+      - name: Bump version $GEM_VERSION
+        run: bin/bump-version $GEM_VERSION
+        shell: bash
+
+      - name: Commit Gemfile.lock & lib/rodiff/version.rb
+        uses: ryancyq/github-signed-commit@v1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          files: |
+            Gemfile.lock
+            lib/rodiff/version.rb
+          commit-message: Bump version for $GEM_VERSION
+          tag: v$GEM_VERSION
+
+      - name: Package gems
         run: |
-          # Attribute commits to the last committer on HEAD
-          git config --global user.email "$(git log -1 --pretty=format:'%ae')"
-          git config --global user.name "$(git log -1 --pretty=format:'%an')"
-          git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY"
+          bundle exec rake package
         shell: bash
 
       - name: Configure RubyGems trusted publishing credentials
         uses: rubygems/configure-rubygems-credentials@v1.0.0
 
-      - run: "bin/release ${{ inputs.version }}"
+      - name: Push gems
+        run: |
+          for gem in pkg/rodiff-$GEM_VERSION*.gem ; do
+            gem push "$gem" --host https://rubygems.org
+          done
         shell: bash
