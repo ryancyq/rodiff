@@ -1,0 +1,55 @@
+name: ci
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    name: "RSpec / Ruby ${{ matrix.ruby-version }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ["2.7", "3.0", "3.1", "3.2", "3.3"]
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          rubygems: 3.4.22 # last version to support Ruby 2.7
+          bundler: latest
+          bundler-cache: true
+
+      - name: Run Rspec
+        run: |
+          bundle exec rake spec
+
+  bundler-user-journey:
+    name: "OS ${{ matrix.os }}"
+    runs-on: ${{matrix.os}}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu, macos, windows]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler: latest
+      
+      - name: User Journey
+        run: spec/integration/bundler_user_journey.sh
+        shell: bash
