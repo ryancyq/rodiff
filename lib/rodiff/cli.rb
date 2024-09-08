@@ -5,6 +5,7 @@ require "rodiff/odiff"
 module Rodiff
   class CLI
     DEFAULT_DIR = File.expand_path(File.join(__dir__, "..", "..", "exe"))
+    LOCAL_INSTALL_DIR_ENV = "ODIFF_INSTALL_DIR"
 
     class CommandError < StandardError; end
 
@@ -48,7 +49,7 @@ module Rodiff
 
     class InstallDirectoryNotFound < CommandError
       def initialize(install_dir)
-        super("ODIFF_INSTALL_DIR is set to #{install_dir}, but that directory does not exist.")
+        super("#{LOCAL_INSTALL_DIR_ENV} is set to #{install_dir}, but that directory does not exist.")
       end
     end
 
@@ -64,24 +65,34 @@ module Rodiff
       end
 
       def executable(exe_path: DEFAULT_DIR)
-        if (odiff_install_dir = ENV.fetch("ODIFF_INSTALL_DIR", nil))
-          raise InstallDirectoryNotFound, odiff_install_dir unless File.directory?(odiff_install_dir)
-
-          warn "NOTE: using ODIFF_INSTALL_DIR to find odiff executable: #{odiff_install_dir}"
+        if (odiff_install_dir = ENV.fetch(LOCAL_INSTALL_DIR_ENV, nil))
           exe_path = odiff_install_dir
-          exe_file = File.expand_path(File.join(odiff_install_dir, "odiff"))
+          exe_file = expand_local_install_dir(odiff_install_dir)
+        elsif supported_platform?
+          exe_file = expand_bundled_dir(exe_path)
         else
-          raise UnsupportedPlatform, platform unless supported_platform?
-
-          exe_files_of_platforms = File.expand_path(File.join(exe_path, "*", "odiff"))
-          exe_file = Dir.glob(exe_files_of_platforms).find do |f|
-            supported_platform?(File.basename(File.dirname(f)))
-          end
+          raise UnsupportedPlatform, platform
         end
 
         raise ExecutableNotFound.new(platform, exe_path) if exe_file.nil? || !File.exist?(exe_file)
 
         exe_file
+      end
+
+      private
+
+      def expand_local_install_dir(local_install_dir)
+        raise InstallDirectoryNotFound, local_install_dir unless File.directory?(local_install_dir)
+
+        warn "NOTE: using #{LOCAL_INSTALL_DIR_ENV} to find odiff executable: #{local_install_dir}"
+        File.expand_path(File.join(local_install_dir, "odiff"))
+      end
+
+      def expand_bundled_dir(bundled_dir)
+        exe_files_of_platforms = File.expand_path(File.join(bundled_dir, "*", "odiff"))
+        Dir.glob(exe_files_of_platforms).find do |f|
+          supported_platform?(File.basename(File.dirname(f)))
+        end
       end
     end
   end
