@@ -27,7 +27,7 @@ This gem wraps the [standalone executable](https://github.com/dmtrKovalenko/odif
 Supported platforms are:
 - arm64-darwin (macos-arm64)
 - x64-mingw32 (windows-x64)
-- x64-mingw-ucr (windows-x64)
+- x64-mingw-ucrt (windows-x64)
 - x86_64-darwin (macos-x64)
 - x86_64-linux (linux-x64)
 
