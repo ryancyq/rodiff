@@ -5,6 +5,10 @@
 set -o pipefail
 set -eux
 
+# set up dependencies
+rm -f Gemfile.lock
+bundle install
+
 # fetch the odiff executables
 bundle exec rake download
 
@@ -20,6 +24,7 @@ pushd "My Bundle"
 cp ../tiger.jpg .
 cp ../tiger-2.jpg .
 
+# use the rodiff under test
 bundle info rodiff
 bundle show --paths
 
