@@ -6,8 +6,10 @@ $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "rodiff/cli"
 
 begin
+  verbose = ARGV.delete "--verbose"
   command = [Rodiff::CLI.executable, *ARGV]
-  puts command.inspect
+  puts "rodiff: #{command.inspect}" if verbose
+
   if Gem.win_platform?
     # use system rather than exec as exec inexplicably fails to find the executable on Windows
     # see related https://github.com/rubys/sprockets-esbuild/pull/4
