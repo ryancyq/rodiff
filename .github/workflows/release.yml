@@ -1,0 +1,44 @@
+name: Release New Version
+concurrency:
+  group: "${{github.workflow}}-${{github.ref}}"
+  cancel-in-progress: true
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Gem Version
+        required: true
+        type: string
+
+jobs:
+  rubygems:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    environment: release
+    timeout-minutes: 3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler: latest
+
+      - name: Set git remote
+        run: |
+          # Attribute commits to the last committer on HEAD
+          git config --global user.email "$(git log -1 --pretty=format:'%ae')"
+          git config --global user.name "$(git log -1 --pretty=format:'%an')"
+          git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/$GITHUB_REPOSITORY"
+        shell: bash
+
+      - name: Configure RubyGems trusted publishing credentials
+        uses: rubygems/configure-rubygems-credentials@v1.0.0
+
+      - run: "bin/release ${{ inputs.version }}"
+        shell: bash
