@@ -10,7 +10,7 @@ fi
 printf "# frozen_string_literal: true\n\nmodule Rodiff\n  VERSION = \"$VERSION\"\nend\n" > ./lib/rodiff/version.rb
 bundle
 git add Gemfile.lock lib/rodiff/version.rb
-git commit -m "Bump version for $VERSION"
+git commit -S -m "Bump version for $VERSION"
 git push
 git tag v$VERSION
 git push --tags
