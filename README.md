@@ -39,7 +39,7 @@ Supported platforms are:
 
 If you are not able to use the vendored standalone executables, a local installation of the `Odiff` executable can be configured by setting an environment variable named `ODIFF_INSTALL_DIR` to the directory path containing the executable.
 
-For example, if you've installed `odiff` via npm which could be something like `/path/to/node_modules/bin/odiff`, then you should set your environment variable like so:
+For example, if you've installed the [`odiff-bin`](https://github.com/dmtrKovalenko/odiff#cross-platform) npm package and had the binaries downloaded at `/path/to/node_modules/bin/odiff`, then you should set your environment variable like so:
 
 ``` sh
 ODIFF_INSTALL_DIR=/path/to/node_modules/bin
