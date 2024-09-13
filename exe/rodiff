@@ -7,7 +7,7 @@ require "rodiff/executable"
 
 begin
   verbose = ARGV.delete "--verbose"
-  command = [Rodiff::CLI.executable, *ARGV]
+  command = [Rodiff::Executable.resolve, *ARGV]
   puts "rodiff: #{command.inspect}" if verbose
 
   if Gem.win_platform?
