@@ -7,9 +7,9 @@ module Rodiff
     DEFAULT_DIR = File.expand_path(File.join(__dir__, "..", "..", "exe"))
     LOCAL_INSTALL_DIR_ENV = "ODIFF_INSTALL_DIR"
 
-    class ExecutableError < StandardError; end
+    class Error < StandardError; end
 
-    class UnsupportedPlatform < ExecutableError
+    class UnsupportedPlatform < Error
       def initialize(platform)
         super(
           <<~MSG
@@ -20,7 +20,7 @@ module Rodiff
       end
     end
 
-    class ExecutableNotFound < ExecutableError
+    class ExecutableNotFound < Error
       def initialize(platform, exe_path)
         super(
           <<~MSG
@@ -47,7 +47,7 @@ module Rodiff
       end
     end
 
-    class InstallDirectoryNotFound < ExecutableError
+    class InstallDirectoryNotFound < Error
       def initialize(install_dir)
         super("#{LOCAL_INSTALL_DIR_ENV} is set to #{install_dir}, but that directory does not exist.")
       end

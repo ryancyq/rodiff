@@ -17,7 +17,7 @@ begin
   else
     exec(*command)
   end
-rescue Rodiff::CLI::CommandError => e
+rescue Rodiff::Executable::Error => e
   warn("ERROR: #{e.message}")
   exit 1
 end
