@@ -3,7 +3,7 @@
 require "spec_helper"
 require "tmpdir"
 
-require_relative "../../lib/rodiff"
+require_relative "../../lib/rodiff/cli"
 
 RSpec.describe Rodiff::CLI do
   describe "#platform" do

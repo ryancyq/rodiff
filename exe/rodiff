@@ -3,7 +3,7 @@
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
-require "rodiff/cli"
+require "rodiff/executable"
 
 begin
   verbose = ARGV.delete "--verbose"
