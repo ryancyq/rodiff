@@ -36,7 +36,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
           bundler: latest
           bundler-cache: true
 
@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
       - uses: actions/download-artifact@v4
         with:
           name: gem-ruby
@@ -68,7 +68,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
       - uses: actions/download-artifact@v4
         with:
           name: gem-x86_64-linux
@@ -82,7 +82,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
       - uses: actions/download-artifact@v4
         with:
           name: gem-x86_64-darwin
@@ -96,7 +96,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
       - uses: actions/download-artifact@v4
         with:
           name: gem-arm64-darwin
@@ -124,7 +124,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
       - uses: actions/download-artifact@v4
         with:
           name: gem-x64-mingw-ucrt

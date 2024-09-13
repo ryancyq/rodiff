@@ -29,7 +29,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
+          ruby-version: "3.3"
           bundler: latest
 
       - name: Bump version $GEM_VERSION
