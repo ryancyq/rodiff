@@ -68,7 +68,7 @@ require_relative "../lib/rodiff/odiff"
 def odiff_download_url(filename)
   [
     "https://github.com/dmtrKovalenko/odiff/releases/download",
-    Rodiff::Odiff::VERSION,
+    "v#{Rodiff::Odiff::VERSION}",
     filename
   ].join "/"
 end

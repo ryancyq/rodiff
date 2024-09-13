@@ -2,7 +2,7 @@
 
 module Rodiff
   module Odiff
-    VERSION = "v3.1.1"
+    VERSION = "3.1.1"
 
     # rubygems platform name => upstream release filename
     PLATFORMS = {

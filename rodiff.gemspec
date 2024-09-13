@@ -35,5 +35,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.7"
   spec.required_rubygems_version = ">= 3.2.0" # for Gem::Platform#match_gem?
 
-  spec.requirements << "odiff, #{Rodiff::Odiff::VERSION}"
+  odiff_major_version = [Gem::Version.new(Rodiff::Odiff::VERSION).segments.first, 0].join "."
+  spec.requirements << "odiff, >= #{Gem::Version.new(odiff_major_version)}"
 end
