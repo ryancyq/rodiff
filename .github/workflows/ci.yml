@@ -38,7 +38,7 @@ jobs:
           bundle exec rake spec
 
   bundler-user-journey:
-    name: "OS ${{ matrix.os }}"
+    name: "Bundler / OS ${{ matrix.os }}"
     runs-on: ${{matrix.os}}-latest
     strategy:
       fail-fast: false
@@ -56,4 +56,30 @@ jobs:
       
       - name: User Journey
         run: spec/integration/bundler_user_journey.sh
+        shell: bash
+
+  npm-user-journey:
+    name: "NPM / OS ${{ matrix.os }}"
+    runs-on: ${{matrix.os}}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu, macos, windows]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler: latest
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20    
+
+      - name: User Journey
+        run: spec/integration/npm_user_journey.sh
         shell: bash
