@@ -70,7 +70,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - run: spec/integration/npm_user_journey.sh
         shell: bash
