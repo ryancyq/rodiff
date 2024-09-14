@@ -21,7 +21,7 @@ jobs:
           - arm64-darwin
           - ruby
           - x64-mingw-ucrt
-          - x64-mingw32
+          - x64-mingw
           - x86_64-darwin
           - x86_64-linux
     runs-on: ubuntu-latest
