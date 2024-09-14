@@ -7,10 +7,10 @@ module Rodiff
     # rubygems platform name => upstream release filename
     PLATFORMS = {
       "arm64-darwin"   => "odiff-macos-arm64.exe",
-      "x64-mingw"    => "odiff-windows-x64.exe",
+      "x64-mingw32"    => "odiff-windows-x64.exe",
       "x64-mingw-ucrt" => "odiff-windows-x64.exe",
-      "x86_64-darwin"  => "odiff-macos-x64.exe",
-      "x86_64-linux"   => "odiff-linux-x64.exe"
+      "x64-darwin"     => "odiff-macos-x64.exe",
+      "x64-linux"      => "odiff-linux-x64.exe"
     }.freeze
   end
 end
