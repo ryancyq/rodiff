@@ -28,4 +28,4 @@ bundle info rodiff
 bundle show --paths
 
 # TEST: odiff was installed correctly
-bundle exec rodiff ./tiger.jpg ./tiger.jpg diff.png
+bundle exec rodiff tiger.jpg tiger.jpg diff.png
