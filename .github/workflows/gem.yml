@@ -21,9 +21,9 @@ jobs:
           - arm64-darwin
           - ruby
           - x64-mingw-ucrt
-          - x64-mingw
-          - x86_64-darwin
-          - x86_64-linux
+          - x64-mingw32
+          - x64-darwin
+          - x64-linux
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -71,12 +71,12 @@ jobs:
           ruby-version: "3.3"
       - uses: actions/download-artifact@v4
         with:
-          name: gem-x86_64-linux
+          name: gem-x64-linux
           path: pkg
       - run: "gem install pkg/rodiff-*.gem"
       - run: "rodiff --help"
 
-  darwin-x86_64-install:
+  darwin-x64-install:
     needs: [package]
     runs-on: macos-13
     steps:
@@ -85,7 +85,7 @@ jobs:
           ruby-version: "3.3"
       - uses: actions/download-artifact@v4
         with:
-          name: gem-x86_64-darwin
+          name: gem-x64-darwin
           path: pkg
       - run: "gem install pkg/rodiff-*.gem"
       - run: "rodiff --help"
@@ -113,7 +113,7 @@ jobs:
           ruby-version: "3.0"
       - uses: actions/download-artifact@v4
         with:
-          name: gem-x64-mingw
+          name: gem-x64-mingw32
           path: pkg
       - run: "gem install pkg/rodiff-*.gem"
       - run: "rodiff --help"
