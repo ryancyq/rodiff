@@ -46,7 +46,6 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler: latest
-          bundler-cache: true
       
       - run: spec/integration/bundler_user_journey.sh
         shell: bash
@@ -65,7 +64,6 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler: latest
-          bundler-cache: true
 
       - uses: actions/setup-node@v4
         with:
