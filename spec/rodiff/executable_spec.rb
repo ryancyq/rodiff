@@ -21,9 +21,9 @@ RSpec.describe Rodiff::Executable do
       lambda do |platform, &block|
         Dir.mktmpdir do |dir|
           FileUtils.mkdir(File.join(dir, platform))
-          path = File.join(dir, platform, exe_filename)
-          FileUtils.touch(path)
-          block.call(dir, path)
+          exe_path = File.join(dir, platform, exe_filename)
+          FileUtils.touch(exe_path)
+          block.call(dir, exe_path)
         end
       end
     end
@@ -31,9 +31,9 @@ RSpec.describe Rodiff::Executable do
     let(:local_odiff_dir) do
       lambda do |&block|
         Dir.mktmpdir do |dir|
-          path = File.join(dir, exe_filename)
-          FileUtils.touch(path)
-          block.call(dir, path)
+          exe_path = File.join(dir, exe_filename)
+          FileUtils.touch(exe_path)
+          block.call(dir, exe_path)
         end
       end
     end
