@@ -53,7 +53,7 @@ RSpec.describe Rodiff::Configuration do
       it "raises #{NoMethodError}" do
         expect { config.abc }.to raise_error(
           NoMethodError,
-          "undefined method `abc' for an instance of Rodiff::Configuration"
+          %r{undefined method [`']abc' for (#<|an instance of )Rodiff::Configuration}
         )
       end
     end
@@ -62,7 +62,7 @@ RSpec.describe Rodiff::Configuration do
       it "raises #{NoMethodError}" do
         expect { config.abc = "1" }.to raise_error(
           NoMethodError,
-          "undefined method `abc=' for an instance of Rodiff::Configuration"
+          %r{undefined method [`']abc=' for (#<|an instance of )Rodiff::Configuration}
         )
       end
     end
