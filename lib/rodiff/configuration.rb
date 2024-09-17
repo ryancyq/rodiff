@@ -2,15 +2,6 @@
 
 module Rodiff
   class Configuration
-    DOTFILE = ".rodiff.yml"
-
-    ROOT = if Gem.ruby_version >= "3.3"
-             File.dirname(__FILE__, 3).freeze
-           else
-             File.expand_path(File.join(File.dirname(__FILE__), "..", "..")).freeze
-           end
-    DEFAULT_CONFIG = File.join(ROOT, "config", "default.yml").freeze
-
     class UnknownConfiguration < StandardError; end
 
     ATTRS = Module.new.tap { |mod| include mod }
