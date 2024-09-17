@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
-module Rodiff
-end
+require_relative "rodiff/configuration"
 
-require_relative "rodiff/executable"
-require_relative "rodiff/odiff"
-require_relative "rodiff/version"
+module Rodiff
+  class << self
+    def configuration
+      @configuration ||= Rodiff::Configuration.new
+    end
+
+    def configure
+      yield configuration
+    end
+  end
+end
