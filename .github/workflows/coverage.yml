@@ -8,8 +8,13 @@ on:
     - cron: 0 12 * * 5
 
 jobs:
-  codecov:
+  coverage:
+    name: "Ruby ${{ matrix.ruby-version }}"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ["2.7", "3.0", "3.1", "3.2", "3.3", head]
     timeout-minutes: 3
     
     steps:
@@ -17,13 +22,35 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
-          bundler: latest
+          ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
 
-      - run: bundle exec rake spec
-        env:
-          CODE_COV: true
+      - run: bundle exec rake coverage:run
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-ruby-${{matrix.ruby-version}}
+          path: coverage-ruby-*
+          include-hidden-files: true
+          retention-days: 1
+
+  report:
+    name: "Report to CodeCov"
+    needs: [coverage]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: coverage-ruby-*
+
+      - run: bundle exec rake coverage:report
 
       - uses: codecov/codecov-action@v4
         with:
