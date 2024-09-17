@@ -8,22 +8,57 @@ on:
     - cron: 0 12 * * 5
 
 jobs:
-  codecov:
+  coverage:
+    name: "Ruby ${{ matrix.ruby-version }}"
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ["2.7", "3.0", "3.1", "3.2", "3.3", head]
     timeout-minutes: 3
     
+    steps:
+      - uses: actions/checkout@v4
+
+        # https://bundler.io/blog/2018/01/17/making-gem-development-a-little-better.html
+      - run: rm Gemfile.lock
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          rubygems: 3.4.22 # last version to support Ruby 2.7
+          bundler-cache: true
+
+      - run: bundle exec rake coverage:run
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-ruby-${{matrix.ruby-version}}
+          path: coverage-ruby-*
+          include-hidden-files: true
+          retention-days: 1
+
+  report:
+    name: "Report to CodeCov"
+    needs: [coverage]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
-          bundler: latest
           bundler-cache: true
 
-      - run: bundle exec rake spec
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: coverage-ruby-*
+          path: coverage-results
+          merge-multiple: true
+
+      - run: bundle exec rake coverage:report
         env:
-          CODE_COV: true
+          COV_DIR: coverage-results
 
       - uses: codecov/codecov-action@v4
         with:

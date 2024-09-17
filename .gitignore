@@ -2,7 +2,7 @@
 /.rspec_status
 /.yardoc
 /_yardoc/
-/coverage/
+/coverage*/
 /doc/
 /pkg/
 /spec/reports/
