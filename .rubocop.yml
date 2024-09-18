@@ -7,6 +7,10 @@ AllCops:
   NewCops: enable
   SuggestExtensions: false
 
+FrozenStringLiteralComment:
+  Exclude:
+    - exe/*
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
