@@ -60,6 +60,14 @@ module Rodiff
       ACCESSOR_ATTRS.each { |key, value| instance_variable_set("@#{key}", value) }
     end
 
+    def odiff_exe_path
+      @odiff_exe_path ||= Rodiff::Executable.resolve
+    end
+
+    def odiff_exe_path=(path)
+      @odiff_exe_path = Rodiff::Executable.resolve(exe_path: path)
+    end
+
     def overrides(opts = {})
       opts.each_key { |key| validate_config_key!(key) }
       @config_overrides.merge!(opts.transform_keys(&:to_sym))
