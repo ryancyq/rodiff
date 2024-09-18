@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     rodiff (1.0.0)
-      dry-cli (~> 1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -17,7 +16,6 @@ GEM
       rexml
     diff-lcs (1.5.1)
     docile (1.4.1)
-    dry-cli (1.1.0)
     hashdiff (1.1.1)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
@@ -86,7 +84,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  dry-cli (~> 1.1)
   rake (~> 13.0)
   rodiff!
   rspec (~> 3.12)
