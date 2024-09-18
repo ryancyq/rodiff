@@ -20,6 +20,7 @@ RSpec.describe Rodiff::Executable do
     let(:tmp_exe_dir) do
       lambda do |platform, &block|
         Dir.mktmpdir do |dir|
+          stub_const("Rodiff::Executable::DEFAULT_DIR", dir)
           FileUtils.mkdir(File.join(dir, platform))
           exe_path = File.join(dir, platform, exe_filename)
           FileUtils.touch(exe_path)
@@ -35,6 +36,13 @@ RSpec.describe Rodiff::Executable do
           FileUtils.touch(exe_path)
           block.call(dir, exe_path)
         end
+      end
+    end
+
+    it "returns the default exe path" do
+      tmp_exe_dir.call(described_class.platform) do |dir, exe|
+        expect(File.expand_path(File.join(dir, described_class.platform, "odiff"))).to eq exe
+        expect(described_class.resolve).to eq exe
       end
     end
 
