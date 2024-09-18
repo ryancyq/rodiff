@@ -1,10 +1,25 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+
 require "rodiff/configuration"
 
 RSpec.describe Rodiff::Configuration do
   let(:config) { described_class.new }
+
+  describe "#odiff_exe_path" do
+    it "resolves to default path" do
+      allow(Rodiff::Executable).to receive(:resolve).and_return("default_exe_path")
+      expect(config.odiff_exe_path).to eq("default_exe_path")
+      expect(Rodiff::Executable).to have_received(:resolve)
+    end
+
+    it "can be configured" do
+      allow(Rodiff::Executable).to receive(:resolve)
+      expect { config.odiff_exe_path = "my_exe_path" }.not_to raise_error
+      expect(Rodiff::Executable).to have_received(:resolve).with(exe_path: "my_exe_path")
+    end
+  end
 
   describe "READER_ATTRS" do
     described_class::READER_ATTRS.each do |key, value|
