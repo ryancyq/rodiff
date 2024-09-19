@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "rodiff/error"
 require "rodiff/executable"
 
 module Rodiff
@@ -12,7 +13,7 @@ module Rodiff
   end
 
   class Configuration
-    class UnknownConfiguration < StandardError; end
+    class UnknownConfiguration < Rodiff::Error; end
 
     ATTRS = Module.new.tap { |mod| include mod }
     READER_ATTRS = {
