@@ -10,6 +10,8 @@ module Rodiff
   class CLI < Thor
     package_name "rodiff"
 
+    default_command :compare
+
     desc "version", "Print version"
     map "-v" => :version
     method_option :odiff, type: :boolean, required: false
