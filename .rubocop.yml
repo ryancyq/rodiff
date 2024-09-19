@@ -7,7 +7,7 @@ AllCops:
   NewCops: enable
   SuggestExtensions: false
 
-FrozenStringLiteralComment:
+Style/FrozenStringLiteralComment:
   Exclude:
     - exe/*
 
