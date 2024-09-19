@@ -3,10 +3,15 @@
 require "spec_helper"
 
 require "rodiff"
-require "rodiff/configuration"
 
 RSpec.describe Rodiff do
   let(:stub_config) { instance_double(Rodiff::Configuration) }
+
+  %w[Configuration Executable].each do |mod|
+    it "loads #{mod}" do
+      expect(described_class).to be_const_defined(mod)
+    end
+  end
 
   it "has configuration" do
     expect(described_class.configuration).to be_a(Rodiff::Configuration)

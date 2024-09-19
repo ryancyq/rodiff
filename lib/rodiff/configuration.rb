@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module Rodiff
+  def self.configuration
+    @configuration ||= Rodiff::Configuration.new
+  end
+
+  def self.configure
+    yield configuration
+  end
+
   class Configuration
     class UnknownConfiguration < StandardError; end
 
