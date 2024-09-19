@@ -2,6 +2,7 @@
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
+require "rodiff/error"
 require "rodiff/executable"
 
 begin
@@ -16,7 +17,7 @@ begin
   else
     exec(*command)
   end
-rescue Rodiff::Executable::Error => e
+rescue Rodiff::Error => e
   warn("ERROR: #{e.message}")
   exit 1
 end
