@@ -35,16 +35,14 @@ module Rodiff
       mod.module_eval(Array(attrs).join(";").to_s, path, line)
     end
 
-    def self.config_attribute_template(name, type:)
+    def self.config_attribute(name, type:)
       case type
-      when :reader then "attr_reader :#{name}"
-      when :writer then "attr_writer :#{name}"
-      when :accessor then "attr_accessor :#{name}"
-      when :attr_proxy
+      when :reader, :writer, :accessor then "attr_#{type} :#{name}"
+      when :proxy
         <<-RUBY
-            def #{name}
-              value_for(:#{name}) { super() }
-            end
+          def #{name}
+            value_for(:#{name}) { super() }
+          end
         RUBY
       else
         raise ArgumentError, "unsupported type #{type.inspect}"
@@ -52,13 +50,13 @@ module Rodiff
     end
 
     generate_config ATTRS, __FILE__, __LINE__, [
-      *READER_ATTRS.keys.map { |key| config_attribute_template(key, type: :reader) },
-      *ACCESSOR_ATTRS.keys.map { |key| config_attribute_template(key, type: :accessor) }
+      *READER_ATTRS.keys.map { |key| config_attribute(key, type: :reader) },
+      *ACCESSOR_ATTRS.keys.map { |key| config_attribute(key, type: :accessor) }
     ]
 
     generate_config self, __FILE__, __LINE__, [
-      *READER_ATTRS.keys.map { |key| config_attribute_template(key, type: :attr_proxy) },
-      *ACCESSOR_ATTRS.keys.map { |key| config_attribute_template(key, type: :attr_proxy) }
+      *READER_ATTRS.keys.map { |key| config_attribute(key, type: :proxy) },
+      *ACCESSOR_ATTRS.keys.map { |key| config_attribute(key, type: :proxy) }
     ]
 
     def initialize
