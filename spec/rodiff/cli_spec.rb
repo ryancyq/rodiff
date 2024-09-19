@@ -91,6 +91,16 @@ RSpec.describe Rodiff::CLI do
         expect(stub_shell).to have_received(:say).with("1.0.0")
       end
     end
+
+    context "with odiff" do
+      let(:cmd_parts) { ["--version", "--odiff"] }
+
+      it "accepts" do
+        allow(Open3).to receive(:capture3)
+        expect { cli_command }.not_to raise_error
+        expect(Open3).to have_received(:capture3).with(%r{/odiff --version$})
+      end
+    end
   end
 
   describe "#compare" do
