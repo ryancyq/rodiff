@@ -28,4 +28,7 @@ bundle info rodiff
 bundle show --paths
 
 # TEST: odiff was installed correctly
+bundle exec rodiff compare tiger.jpg tiger.jpg diff.png
+
+# TEST: rodiff default to compare command when unspecified
 bundle exec rodiff tiger.jpg tiger.jpg diff.png

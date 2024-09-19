@@ -33,14 +33,18 @@ bundle info rodiff
 bundle show --paths
 
 # TEST: odiff executable was not configured
-OUTPUT=$(bundle exec rodiff tiger.jpg tiger.jpg diff.png 2>&1 || true)
+OUTPUT=$(bundle exec rodiff compare tiger.jpg tiger.jpg diff.png 2>&1 || true)
 echo "$OUTPUT" | fgrep "ERROR: Cannot find the odiff executable for"
 
 # TEST: odiff was linked with relative path
-OUTPUT=$(ODIFF_INSTALL_DIR="./node_modules/.bin" bundle exec rodiff tiger.jpg tiger.jpg diff.png 2>&1)
+OUTPUT=$(ODIFF_INSTALL_DIR="./node_modules/.bin" bundle exec rodiff compare tiger.jpg tiger.jpg diff.png 2>&1)
 echo "$OUTPUT" | fgrep "NOTE: using ODIFF_INSTALL_DIR to find odiff executable: ./node_modules/.bin"
 
 # TEST: odiff was linked with absolute path
 ODIFF_BIN=$(realpath "./node_modules/odiff-bin/bin")
 OUTPUT=$(ODIFF_INSTALL_DIR=$ODIFF_BIN bundle exec rodiff tiger.jpg tiger.jpg diff.png 2>&1)
 echo "$OUTPUT" | egrep "NOTE: using ODIFF_INSTALL_DIR to find odiff executable: .+?/odiff-bin/bin"
+
+# TEST: rodiff default to compare command when unspecified
+OUTPUT=$(ODIFF_INSTALL_DIR="./node_modules/.bin" bundle exec rodiff tiger.jpg tiger.jpg diff.png 2>&1)
+echo "$OUTPUT" | fgrep "NOTE: using ODIFF_INSTALL_DIR to find odiff executable: ./node_modules/.bin"
