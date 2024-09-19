@@ -47,7 +47,7 @@ RSpec.describe Rodiff::CLI do
       it "accepts" do
         allow(Open3).to receive(:capture3)
         expect { cli_command }.not_to raise_error
-        expect(Open3).to have_received(:capture3).with("exe_path/my-intermediate-folder/odiff --version")
+        expect(Open3).to have_received(:capture3).with("exe_path/my-intermediate-folder/odiff", "--version")
       end
     end
 
@@ -57,7 +57,7 @@ RSpec.describe Rodiff::CLI do
       it "escapes" do
         allow(Open3).to receive(:capture3)
         expect { cli_command }.not_to raise_error
-        expect(Open3).to have_received(:capture3).with("exe_path/my\\ intermediate\\ folder/odiff --version")
+        expect(Open3).to have_received(:capture3).with("exe_path/my\\ intermediate\\ folder/odiff", "--version")
       end
     end
   end
@@ -98,7 +98,7 @@ RSpec.describe Rodiff::CLI do
       it "accepts" do
         allow(Open3).to receive(:capture3)
         expect { cli_command }.not_to raise_error
-        expect(Open3).to have_received(:capture3).with(%r{/odiff --version$})
+        expect(Open3).to have_received(:capture3).with("exe_path/odiff", "--version")
       end
     end
   end
@@ -110,7 +110,7 @@ RSpec.describe Rodiff::CLI do
       it "accepts" do
         allow(Open3).to receive(:capture3)
         expect { cli_command }.not_to raise_error
-        expect(Open3).to have_received(:capture3).with(%r{/odiff\s*$})
+        expect(Open3).to have_received(:capture3).with("exe_path/odiff", nil, nil, nil)
       end
     end
 
@@ -130,7 +130,12 @@ RSpec.describe Rodiff::CLI do
       it "accepts" do
         allow(Open3).to receive(:capture3)
         expect { cli_command }.not_to raise_error
-        expect(Open3).to have_received(:capture3).with(%r{/odiff path/to/baseline path/to/variant path/to/diff$})
+        expect(Open3).to have_received(:capture3).with(
+          "exe_path/odiff",
+          "path/to/baseline",
+          "path/to/variant",
+          "path/to/diff"
+        )
       end
     end
   end

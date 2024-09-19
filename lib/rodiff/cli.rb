@@ -54,11 +54,11 @@ module Rodiff
     end
 
     def odiff_exec(*cmd)
-      parts = []
-      parts << config.odiff_exe_path.shellescape
-      parts.push(*cmd)
+      cmd_parts = []
+      cmd_parts << config.odiff_exe_path.shellescape
+      cmd_parts.push(*cmd)
 
-      stdout, stderr, status = Open3.capture3(parts.join(" "))
+      stdout, stderr, status = Open3.capture3(*cmd_parts)
       if block_given?
         yield stdout, stderr, status
       else
