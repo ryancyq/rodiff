@@ -13,7 +13,7 @@ module Rodiff
     default_command :compare
 
     desc "version", "Print version"
-    map "-v" => :version
+    map ["-v", "--version"] => :version
     method_option :odiff, type: :boolean, required: false
     def version
       if options.odiff?
