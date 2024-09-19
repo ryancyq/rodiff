@@ -4,6 +4,7 @@ require "thor"
 require "open3"
 
 require "rodiff/configuration"
+require "rodiff/error"
 require "rodiff/version"
 
 module Rodiff
@@ -30,6 +31,8 @@ module Rodiff
       raise ArgumentError, "BASELINE, VARIANT, DIFF must be provided" unless all_present ^ all_absent
 
       odiff_exec(baseline, variant, diff)
+    rescue Rodiff::Error => e
+      raise Thor::Error, "ERROR: #{e.message}"
     end
 
     def self.exit_on_failure?
