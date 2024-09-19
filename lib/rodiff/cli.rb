@@ -2,6 +2,7 @@
 
 require "thor"
 require "open3"
+require "shellwords"
 
 require "rodiff/configuration"
 require "rodiff/error"
@@ -54,7 +55,7 @@ module Rodiff
 
     def odiff_exec(*cmd)
       parts = []
-      parts << config.odiff_exe_path
+      parts << config.odiff_exe_path.shellescape
       parts.push(*cmd)
 
       stdout, stderr, status = Open3.capture3(parts.join(" "))
