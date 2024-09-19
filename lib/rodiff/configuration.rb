@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "rodiff/executable"
+
 module Rodiff
   def self.configuration
     @configuration ||= Rodiff::Configuration.new
