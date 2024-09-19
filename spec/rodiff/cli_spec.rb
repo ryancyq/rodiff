@@ -6,7 +6,10 @@ require "rodiff/cli"
 
 RSpec.describe Rodiff::CLI do
   let(:cli_command) { described_class.start(cmd_parts, shell: stub_shell) }
+  let(:exe_path) { "exe_path/odiff" }
   let(:stub_shell) { instance_double(Thor::Shell::Basic) }
+
+  before { allow(Rodiff.configuration).to receive(:odiff_exe_path).and_return(exe_path) }
 
   describe "#default_command" do
     subject { described_class.default_command }
