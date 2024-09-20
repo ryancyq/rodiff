@@ -34,7 +34,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: coverage-ruby-${{matrix.ruby-version}}
-          path: coverage-ruby-*
+          path: coverage/ruby-*
           include-hidden-files: true
           retention-days: 1
 
@@ -62,4 +62,5 @@ jobs:
 
       - uses: codecov/codecov-action@v4
         with:
+          directory: coverage-results
           token: ${{ secrets.CODECOV_TOKEN }}
