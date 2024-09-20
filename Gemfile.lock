@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     rodiff (1.0.0)
+      thor (~> 1.3.2)
 
 GEM
   remote: https://rubygems.org/
@@ -68,6 +69,7 @@ GEM
       simplecov (~> 0.19)
     simplecov-html (0.13.0)
     simplecov_json_formatter (0.1.4)
+    thor (1.3.2)
     unicode-display_width (2.5.0)
     vcr (6.3.1)
       base64
@@ -92,6 +94,7 @@ DEPENDENCIES
   rubocop-rspec
   simplecov (~> 0.22.0)
   simplecov-cobertura
+  thor (~> 1.3.2)
   vcr (~> 6.3)
   webmock (~> 3.23)
 
