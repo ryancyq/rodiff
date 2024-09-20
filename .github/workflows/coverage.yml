@@ -62,4 +62,5 @@ jobs:
 
       - uses: codecov/codecov-action@v4
         with:
+          directory: coverage-results
           token: ${{ secrets.CODECOV_TOKEN }}
