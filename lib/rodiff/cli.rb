@@ -55,7 +55,7 @@ module Rodiff
 
     def odiff_exec(*cmd)
       cmd_parts = []
-      cmd_parts << config.odiff_exe_path.shellescape
+      cmd_parts << config.odiff_exe_path
       cmd_parts.push(*cmd)
 
       stdout, stderr, status = Open3.capture3(*cmd_parts)

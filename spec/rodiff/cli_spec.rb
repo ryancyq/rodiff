@@ -44,7 +44,7 @@ RSpec.describe Rodiff::CLI do
     context "when path is shell safe" do
       let(:exe_path) { "exe_path/my-intermediate-folder/odiff" }
 
-      it "accepts" do
+      it "fowards to open3 in parts" do
         allow(Open3).to receive(:capture3)
         expect { cli_command }.not_to raise_error
         expect(Open3).to have_received(:capture3).with("exe_path/my-intermediate-folder/odiff", "--version")
@@ -54,10 +54,10 @@ RSpec.describe Rodiff::CLI do
     context "when path is not shell safe" do
       let(:exe_path) { "exe_path/my intermediate folder/odiff" }
 
-      it "escapes" do
+      it "fowards to open3 in parts" do
         allow(Open3).to receive(:capture3)
         expect { cli_command }.not_to raise_error
-        expect(Open3).to have_received(:capture3).with("exe_path/my\\ intermediate\\ folder/odiff", "--version")
+        expect(Open3).to have_received(:capture3).with("exe_path/my intermediate folder/odiff", "--version")
       end
     end
   end
