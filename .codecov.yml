@@ -16,3 +16,26 @@ coverage:
 
 comment:
   require_changes: true
+
+flag_management:
+  default_rules:
+    statuses:
+      - type: project
+        target: 99%
+        threshold: 1%
+      - type: patch
+        target: 99%
+        threshold: 1%
+  individual_flags:
+    - name: ruby 2.7
+      paths: [coverage-results/ruby-2.7*]
+    - name: ruby 3.0
+      paths: [coverage-results/ruby-3.0*]
+    - name: ruby 3.1
+      paths: [coverage-results/ruby-3.1*]
+    - name: ruby 3.2
+      paths: [coverage-results/ruby-3.2*]
+    - name: ruby 3.3
+      paths: [coverage-results/ruby-3.3*]
+    - name: ruby 3.4
+      paths: [coverage-results/ruby-3.4*]
