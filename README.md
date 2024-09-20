@@ -5,7 +5,7 @@
 [![Coverage][coverage_badge]][coverage]
 [![Maintainability][maintainability_badge]][maintainability]
 
-A ruby wrapper for [Odiff](https://github.com/dmtrKovalenko/odiff), an image comparison tool written in OCamel.
+A ruby image comparison tool powered by [Odiff](https://github.com/dmtrKovalenko/odiff) which written in OCamel.
 
 ## Motivation
 

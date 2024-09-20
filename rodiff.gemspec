@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Ryan Chang"]
   spec.email = ["ryancyq@gmail.com"]
 
-  spec.summary     = "A ruby wrapper for odiff"
+  spec.summary     = "A ruby image comparison tool powered by ODiff which written in OCamel"
   spec.homepage    = "https://github.com/ryancyq/rodiff"
   spec.license     = "MIT"
 
