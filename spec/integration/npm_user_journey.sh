@@ -26,6 +26,7 @@ npm install odiff-bin
 
 # TEST: odiff was installed correctly
 npx -v
+npx --loglevel verbose odiff-bin --help
 npx --loglevel verbose odiff-bin tiger.jpg tiger.jpg diff.png
 
 # use the rodiff under test
