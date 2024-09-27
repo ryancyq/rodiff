@@ -1,4 +1,4 @@
-name: Release New Version
+run-name: Release Version ${{ inputs.version }}
 concurrency:
   group: release-new-version
   cancel-in-progress: true
