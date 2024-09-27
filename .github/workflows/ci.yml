@@ -53,7 +53,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3"
           bundler: latest
       
       - run: spec/integration/bundler_user_journey.sh
@@ -74,7 +74,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3"
           bundler: latest
 
       - uses: actions/setup-node@v4
