@@ -40,7 +40,7 @@ jobs:
 
   bundler-user-journey:
     name: "Bundler / OS ${{ matrix.os }}"
-    runs-on: ${{matrix.os}}-latest
+    runs-on: "${{ matrix.os }}-latest"
     strategy:
       fail-fast: false
       matrix:
@@ -61,7 +61,7 @@ jobs:
 
   npm-user-journey:
     name: "NPM / OS ${{ matrix.os }}"
-    runs-on: ${{matrix.os}}-latest
+    runs-on: "${{ matrix.os }}-latest"
     strategy:
       fail-fast: false
       matrix:
