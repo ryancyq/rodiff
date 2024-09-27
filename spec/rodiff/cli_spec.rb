@@ -3,6 +3,7 @@
 require "spec_helper"
 
 require "rodiff/cli"
+require "rodiff/version"
 
 RSpec.describe Rodiff::CLI do
   let(:cli_command) { described_class.start(cmd_parts, shell: stub_shell) }
@@ -70,7 +71,7 @@ RSpec.describe Rodiff::CLI do
 
       it "accepts" do
         expect { cli_command }.not_to raise_error
-        expect(stub_shell).to have_received(:say).with("1.0.0")
+        expect(stub_shell).to have_received(:say).with(Rodiff::VERSION)
       end
     end
 
@@ -79,7 +80,7 @@ RSpec.describe Rodiff::CLI do
 
       it "accepts" do
         expect { cli_command }.not_to raise_error
-        expect(stub_shell).to have_received(:say).with("1.0.0")
+        expect(stub_shell).to have_received(:say).with(Rodiff::VERSION)
       end
     end
 
@@ -88,7 +89,7 @@ RSpec.describe Rodiff::CLI do
 
       it "accepts" do
         expect { cli_command }.not_to raise_error
-        expect(stub_shell).to have_received(:say).with("1.0.0")
+        expect(stub_shell).to have_received(:say).with(Rodiff::VERSION)
       end
     end
 
