@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: 0 12 * * 5
+    - cron: '0 12 * * 5'
 
 jobs:
   coverage:
