@@ -14,7 +14,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: ["2.7", "3.0", "3.1", "3.2", "3.3", head]
+        ruby-version: 
+          - "2.7"
+          - "3.0"
+          - "3.1"
+          - "3.2"
+          - "3.3"
+          - "head"
     timeout-minutes: 3
 
     steps:
@@ -38,7 +44,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu, macos, windows]
+        os:
+          - ubuntu
+          - macos
+          - windows
     steps:
       - uses: actions/checkout@v4
 
@@ -56,7 +65,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu, macos] # exclude windows due to issue with binary in npm package
+        os:
+          - ubuntu
+          - macos
+          # - windows # exclude windows due to issue with binary in npm package
     steps:
       - uses: actions/checkout@v4
 
