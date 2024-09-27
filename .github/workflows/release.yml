@@ -32,8 +32,8 @@ jobs:
           ruby-version: "3.3"
           bundler: latest
 
-      - name: Bump version $GEM_VERSION
-        run: bin/bump-version $GEM_VERSION
+      - name: Bump version ${{ env.GEM_VERSION }}
+        run: bin/bump-version ${{ env.GEM_VERSION }}
         shell: bash
 
       - name: Commit Gemfile.lock & lib/rodiff/version.rb
@@ -44,8 +44,8 @@ jobs:
           files: |
             Gemfile.lock
             lib/rodiff/version.rb
-          commit-message: Bump version for $GEM_VERSION
-          tag: v$GEM_VERSION
+          commit-message: Bump version for ${{ env.GEM_VERSION }}
+          tag: v${{ env.GEM_VERSION }}
 
       - name: Package gems
         run: |
