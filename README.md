@@ -9,10 +9,9 @@ A ruby image comparison tool powered by [Odiff](https://github.com/dmtrKovalenko
 
 ## Motivation
 
-A strong candidate against the veteran players on the internet like [pixelmatch](https://github.com/mapbox/pixelmatch) and [ImageMagick](https://github.com/ImageMagick/ImageMagick)
-
 Impressive [benchmarks](https://github.com/dmtrKovalenko/odiff#benchmarks) from `Odiff`.
 
+A strong candidate against the veteran players like [pixelmatch](https://github.com/mapbox/pixelmatch) and [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 
 ## Getting Started
 
