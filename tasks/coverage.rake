@@ -3,6 +3,11 @@
 namespace :coverage do
   desc "Run coverage with spec"
   task :run do
+    require "simplecov"
+    require "rake/clean"
+    # clean up previously generated report
+    Rake::Cleaner.cleanup_files([SimpleCov.coverage_dir])
+
     Rake::Task[:spec].invoke(coverage: true)
   end
 
