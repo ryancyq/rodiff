@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-SimpleCov.start do
+SimpleCov.configure do
   enable_coverage :branch
   command_name "ruby-#{RUBY_VERSION}"
   coverage_dir File.join(ENV.fetch("COV_DIR", "coverage"), command_name)
