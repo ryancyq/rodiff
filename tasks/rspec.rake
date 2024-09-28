@@ -3,8 +3,6 @@
 require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:spec, [:coverage]) do |config, args|
-  opts = []
-  opts << "--format documentation"
-  opts << "--require 'simplecov'" if args[:coverage]
-  config.rspec_opts = opts.join(" ")
+  config.ruby_opts = "-r./.simplecov_spawn" if args[:coverage]
+  config.rspec_opts = "--format documentation"
 end
