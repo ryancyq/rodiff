@@ -27,3 +27,5 @@ namespace :coverage do
     end
   end
 end
+
+task coverage: ["coverage:run", "coverage:report"]
