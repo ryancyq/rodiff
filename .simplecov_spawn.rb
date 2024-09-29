@@ -2,5 +2,4 @@
 
 require "simplecov"
 
-SimpleCov.at_fork.call(Process.pid)
 SimpleCov.start
