@@ -37,6 +37,9 @@ jobs:
 
       - run: bundle exec rake coverage:run
 
+      - run: sudo apt install tree
+      - run: tree -a coverage
+
       - uses: actions/upload-artifact@v4
         with:
           name: "coverage-ruby-${{ matrix.ruby-version }}"
@@ -48,76 +51,33 @@ jobs:
     name: "Report to CodeCov"
     needs: [coverage]
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: 
+          - "2.7"
+          - "3.0"
+          - "3.1"
+          - "3.2"
+          - "3.3"
+          - "head"
+    timeout-minutes: 3
+
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3"
-          bundler-cache: true
-
       - uses: actions/download-artifact@v4
         with:
-          pattern: coverage-ruby-*
-          path: coverage-results
-          merge-multiple: true
+          pattern: "coverage-ruby-${{ matrix.ruby-version }}*"
+          path: coverage
 
-      - run: bundle exec rake coverage:report
-        env:
-          COV_DIR: coverage-results
+      - run: sudo apt install tree
+      - run: tree -a coverage
 
-      - name: Populate coverage result path for different ruby
-        run: |
-          for dir in coverage-results/ruby-*; do
-            version=$(basename "$dir")
-            short_version=$(echo "$version" | cut -d'.' -f1,2 | sed 's/\./-/g')
-            echo "dir-${short_version}=$dir" >> $GITHUB_ENV
-          done
-
-      - name: Upload coverage to Codecov (ruby 2.7)
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
-          directory: ${{ env.dir-ruby-2-7 }}
+          directory: coverage
           token: ${{ secrets.CODECOV_TOKEN }}
-          flags: ruby-2-7
-          fail_ci_if_error: true
-
-      - name: Upload coverage to Codecov (ruby 3.0)
-        uses: codecov/codecov-action@v4
-        with:
-          directory: ${{ env.dir-ruby-3-0 }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: ruby-3-0
-          fail_ci_if_error: true
-
-      - name: Upload coverage to Codecov (ruby 3.1)
-        uses: codecov/codecov-action@v4
-        with:
-          directory: ${{ env.dir-ruby-3-1 }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: ruby-3-1
-          fail_ci_if_error: true
-
-      - name: Upload coverage to Codecov (ruby 3.2)
-        uses: codecov/codecov-action@v4
-        with:
-          directory: ${{ env.dir-ruby-3-3 }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: ruby-3-2
-          fail_ci_if_error: true
-
-      - name: Upload coverage to Codecov (ruby 3.3)
-        uses: codecov/codecov-action@v4
-        with:
-          directory: ${{ env.dir-ruby-3-3 }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: ruby-3-3
-          fail_ci_if_error: true
-
-      - name: Upload coverage to Codecov (ruby 3.4)
-        uses: codecov/codecov-action@v4
-        with:
-          directory: ${{ env.dir-ruby-3-4 }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: ruby-3-4
+          flags: "ruby-${{ matrix.ruby-version }}"
           fail_ci_if_error: true
