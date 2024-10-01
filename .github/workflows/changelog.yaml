@@ -1,0 +1,40 @@
+name: Generate CHANGELOG.md
+
+on:
+  workflow_run: # only runs on default branch
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: 0 12 * * 5
+
+concurrency:
+  group: generate-changelog
+  cancel-in-progress: true
+
+jobs:
+  changelog_generator:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 3
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - run: bundle exec rake changelog
+        env:
+          CHANGELOG_GITHUB_TOKEN: ${{ github.token }}
+
+      - uses: ryancyq/github-signed-commit@v1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          files: |
+            CHANGELOG.md
+          commit-message: "ci: update CHANGELOG.md"

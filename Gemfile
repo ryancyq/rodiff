@@ -18,6 +18,8 @@ group :development do
   gem "rubocop", "~> 1.65", require: false
   gem "rubocop-rake", require: false
   gem "rubocop-rspec", require: false
+
+  gem "github_changelog_generator", "~> 1.16", require: false
 end
 
 group :test do
