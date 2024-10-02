@@ -22,15 +22,16 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-
-      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
-          bundler-cache: true
+          fetch-depth: 0
 
-      - run: bundle exec rake changelog
+      - uses: orhun/git-cliff-action@v3
+        with:
+          config: cliff.toml
+          args: v1.0.0..HEAD
         env:
-          CHANGELOG_GITHUB_TOKEN: ${{ github.token }}
+          OUTPUT: CHANGELOG.md
+          GITHUB_REPO: ${{ github.repository }}
 
       - uses: ryancyq/github-signed-commit@v1
         env:
