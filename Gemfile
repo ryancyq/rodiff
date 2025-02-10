@@ -22,5 +22,5 @@ end
 
 group :test do
   gem "vcr", "~> 6.3"
-  gem "webmock", "~> 3.24"
+  gem "webmock", "~> 3.25"
 end
