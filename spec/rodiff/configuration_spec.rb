@@ -21,6 +21,24 @@ RSpec.describe Rodiff::Configuration do
     end
   end
 
+  describe "DOTFILE" do
+    subject { described_class::DOTFILE }
+
+    it { is_expected.to eq ".rodiff.yml" }
+  end
+
+  describe "ROOT" do
+    subject { described_class::ROOT }
+
+    it { is_expected.to eq Pathname.new(__dir__).dirname.parent.to_s }
+  end
+
+  describe "DEFAULT_CONFIG" do
+    subject { described_class::DEFAULT_CONFIG }
+
+    it { is_expected.to end_with("/config/default.yml") }
+  end
+
   describe "READER_ATTRS" do
     described_class::READER_ATTRS.each do |key, value|
       context "with ##{key}" do
