@@ -38,5 +38,5 @@ Gem::Specification.new do |spec|
   odiff_major_version = [Gem::Version.new(Rodiff::Odiff::VERSION).segments.first, 0].join "."
   spec.requirements << "odiff, >= #{Gem::Version.new(odiff_major_version)}"
 
-  spec.add_dependency "thor", "~> 1.3.2"
+  spec.add_dependency "thor", ">= 1.3.2", "< 1.5.0"
 end
