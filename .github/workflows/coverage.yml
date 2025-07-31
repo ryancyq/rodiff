@@ -53,6 +53,7 @@ jobs:
     name: "CodeCov (Ruby ${{ matrix.ruby-version }})"
     needs: [coverage]
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.ruby-version == 'head' }}
     strategy:
       fail-fast: false
       matrix:
