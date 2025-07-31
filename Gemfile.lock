@@ -29,7 +29,7 @@ GEM
     public_suffix (5.1.1)
     racc (1.8.1)
     rainbow (3.1.1)
-    rake (13.2.1)
+    rake (13.3.0)
     regexp_parser (2.10.0)
     rexml (3.4.1)
     rspec (3.13.0)
@@ -96,7 +96,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  rake (~> 13.0)
+  rake (~> 13.3)
   rodiff!
   rspec (~> 3.12)
   rubocop (~> 1.79)
