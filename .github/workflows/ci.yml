@@ -64,13 +64,14 @@ jobs:
   npm-user-journey:
     name: "NPM / OS ${{ matrix.os }}"
     runs-on: "${{ matrix.os }}-latest"
+    continue-on-error: ${{ matrix.os == 'windows' }} # odiff-bin npm package on windows having issues
     strategy:
       fail-fast: false
       matrix:
         os:
           - ubuntu
           - macos
-          # - windows # exclude windows due to issue with binary in npm package
+          - windows
     steps:
       - uses: actions/checkout@v4
 
