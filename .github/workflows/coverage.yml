@@ -42,7 +42,7 @@ jobs:
       - run: sudo apt install tree
       - run: tree -a coverage
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: "coverage-ruby-${{ matrix.ruby-version }}"
           path: coverage/ruby-*
