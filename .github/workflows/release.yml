@@ -30,7 +30,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
+          ruby-version: "4"
           bundler: latest
 
       - name: Bump version ${{ env.GEM_VERSION }}
