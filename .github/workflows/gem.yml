@@ -33,7 +33,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
+          ruby-version: "4"
           bundler: latest
           bundler-cache: true
 
@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
+          ruby-version: "4"
       - uses: actions/download-artifact@v7
         with:
           name: gem-ruby
@@ -65,7 +65,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
+          ruby-version: "4"
       - uses: actions/download-artifact@v7
         with:
           name: gem-x86_64-linux
@@ -79,7 +79,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
+          ruby-version: "4"
       - uses: actions/download-artifact@v7
         with:
           name: gem-x86_64-darwin
@@ -93,7 +93,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
+          ruby-version: "4"
       - uses: actions/download-artifact@v7
         with:
           name: gem-arm64-darwin
@@ -121,7 +121,7 @@ jobs:
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3"
+          ruby-version: "4"
       - uses: actions/download-artifact@v7
         with:
           name: gem-x64-mingw-ucrt
