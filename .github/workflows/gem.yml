@@ -75,7 +75,7 @@ jobs:
 
   darwin-x86_64-install:
     needs: [package]
-    runs-on: macos-13
+    runs-on: macos-26-large
     steps:
       - uses: ruby/setup-ruby@v1
         with:
@@ -89,7 +89,7 @@ jobs:
 
   darwin-arm64-install:
     needs: [package]
-    runs-on: macos-14
+    runs-on: macos-26
     steps:
       - uses: ruby/setup-ruby@v1
         with:
