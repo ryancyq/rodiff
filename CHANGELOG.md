@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file. See [conven
 
 - upgrade rubocop yml syntax ([#79](https://github.com/ryancyq/rodiff/issues/79)) - ([50b214a](https://github.com/ryancyq/rodiff/commit/50b214abb654ef07e01abeb8f4a7674659fd27b4)) - Ryan Chang
 
+### Documentation
+
+- update config file example in readme - ([50005fc](https://github.com/ryancyq/rodiff/commit/50005fc5822383e7de35330d5d9f97dd71faeec1)) - Ryan Chang
+
 ### Features
 
 - rodiff config file ([#15](https://github.com/ryancyq/rodiff/issues/15)) - ([f147ee4](https://github.com/ryancyq/rodiff/commit/f147ee4edaeb1a0266c2624eb7469f2538cc6696)) - Ryan Chang
