@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rodiff (1.1.1)
+    rodiff (1.2.0)
       thor (>= 1.3.2, < 1.5.0)
 
 GEM
