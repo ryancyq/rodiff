@@ -1,0 +1,40 @@
+# Default configuration for Rodiff
+# This file contains all available configuration options with their default values
+#
+# Copy this to .rodiff.yml in your project root to customize settings
+
+# File pattern for including images in comparison
+# Supports glob patterns (e.g., "**/*.png" for all PNG files recursively)
+include_pattern: "{*,**/*}.jpg"
+
+# File pattern for excluding images from comparison
+# Supports glob patterns (e.g., "archived/**" to exclude archived directory)
+exclude_pattern: ""
+
+# File pattern for specifying which images to compare
+compare_pattern: ""
+
+# Ignore antialiasing when comparing images
+# When true, small differences due to antialiasing are ignored
+ignore_antialiasing: false
+
+# Color threshold for considering pixels as different (0.0 - 1.0)
+# Lower values are more strict, higher values are more lenient
+# 0.1 means 10% color difference threshold
+color_threshold: 0.1
+
+# Output diff mask instead of diff image
+# When true, outputs a black/white mask showing differences
+output_diff_mask: false
+
+# Exit code behavior when odiff detects differences
+# Can be a number or a lambda that takes the odiff exit code
+# Default: pass through odiff exit code
+# exit_code_odiff: ->(code) { code }
+
+# Exit code when an error occurs (not image differences)
+exit_code_error: 1
+
+# Fail if no images are found to compare
+# When true, exit with error if no comparison is performed
+fail_if_no_comparison: false
