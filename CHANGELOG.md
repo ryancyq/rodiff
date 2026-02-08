@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file. See [conven
 ---
 ## [Unreleased](https://github.com/ryancyq/rodiff/tree/HEAD)
 
+### Bug Fixes
+
+- upgrade rubocop yml syntax ([#79](https://github.com/ryancyq/rodiff/issues/79)) - ([50b214a](https://github.com/ryancyq/rodiff/commit/50b214abb654ef07e01abeb8f4a7674659fd27b4)) - Ryan Chang
+
+### Features
+
+- rodiff config file ([#15](https://github.com/ryancyq/rodiff/issues/15)) - ([f147ee4](https://github.com/ryancyq/rodiff/commit/f147ee4edaeb1a0266c2624eb7469f2538cc6696)) - Ryan Chang
+
 ### Burn
 
 - gem github_changelog_generator - ([89e96a8](https://github.com/ryancyq/rodiff/commit/89e96a87dab4af738e842a4402a655468144592c)) - Ryan Chang
