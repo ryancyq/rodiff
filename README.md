@@ -50,6 +50,63 @@ or, for relative paths like `./node_modules/.bin/odiff`:
 ODIFF_INSTALL_DIR=node_modules/.bin
 ```
 
+## Configuration
+
+Rodiff automatically discovers and loads configuration from `.rodiff.yml` files in your project.
+
+### Configuration File Discovery
+
+Rodiff searches for `.rodiff.yml` starting from the current directory and traversing upward to your home directory:
+
+```
+/home/username/projects/myapp/src/tests/.rodiff.yml  ← checks here first
+/home/username/projects/myapp/src/.rodiff.yml
+/home/username/projects/myapp/.rodiff.yml            ← typically found here
+/home/username/projects/.rodiff.yml
+/home/username/.rodiff.yml                            ← stops here (home directory)
+```
+
+### Configuration Options
+
+Create a `.rodiff.yml` file in your project root:
+
+```yaml
+# File patterns for image comparison (supports glob patterns)
+include_pattern: "screenshots/**/*.png"
+exclude_pattern: "screenshots/archived/**"
+
+# Comparison settings
+color_threshold: 0.1          # 0.0 - 1.0 (lower = stricter)
+ignore_antialiasing: false    # Ignore antialiasing differences
+output_diff_mask: false       # Output black/white mask instead of diff image
+
+# Error handling
+fail_if_no_comparison: false  # Exit with error if no images found
+exit_code_error: 1           # Exit code for errors (not image differences)
+```
+
+### Programmatic Configuration
+
+You can also configure Rodiff programmatically:
+
+```ruby
+Rodiff.configure do |config|
+  config.include_pattern = "**/*.png"
+  config.color_threshold = 0.15
+  config.ignore_antialiasing = true
+end
+```
+
+Or override specific values:
+
+```ruby
+config = Rodiff::Configuration.new
+config.overrides(
+  color_threshold: 0.2,
+  output_diff_mask: true
+)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
