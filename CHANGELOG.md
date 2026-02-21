@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [Unreleased](https://github.com/ryancyq/rodiff/tree/HEAD)
+
+### Build
+
+- **(deps-dev)** bump vcr from 6.3.1 to 6.4.0 ([#81](https://github.com/ryancyq/rodiff/issues/81)) - ([0af3c02](https://github.com/ryancyq/rodiff/commit/0af3c02c358311c8b37d8f56c4447f946f1110eb)) - dependabot[bot]
+
+---
 ## [1.2.0](https://github.com/ryancyq/rodiff/compare/v1.1.1..v1.2.0) - 2026-02-08
 
 ### Bug Fixes
