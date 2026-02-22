@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 ### Build
 
+- **(deps)** update thor requirement from >= 1.3.2, < 1.5.0 to >= 1.3.2, < 1.6.0 ([#80](https://github.com/ryancyq/rodiff/issues/80)) - ([f9f829c](https://github.com/ryancyq/rodiff/commit/f9f829ca4f3c962e7d1ca188031f2135715e5506)) - dependabot[bot]
 - **(deps-dev)** bump vcr from 6.3.1 to 6.4.0 ([#81](https://github.com/ryancyq/rodiff/issues/81)) - ([0af3c02](https://github.com/ryancyq/rodiff/commit/0af3c02c358311c8b37d8f56c4447f946f1110eb)) - dependabot[bot]
 
 ---
