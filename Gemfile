@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "thor", "~> 1.4.0"
+gem "thor", "~> 1.5.0"
 
 group :development, :test do
   gem "rake", "~> 13.3"
