@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file. See [conven
 - **(deps)** bump actions/download-artifact from 7 to 8 ([#84](https://github.com/ryancyq/rodiff/issues/84)) - ([0f11b38](https://github.com/ryancyq/rodiff/commit/0f11b383346a9e053cfee4b4215cbfa655e9821e)) - dependabot[bot]
 - **(deps)** bump actions/upload-artifact from 6 to 7 ([#83](https://github.com/ryancyq/rodiff/issues/83)) - ([8994b34](https://github.com/ryancyq/rodiff/commit/8994b349ba721dad50c146e5614fb0e34465e2ef)) - dependabot[bot]
 - **(deps-dev)** bump vcr from 6.3.1 to 6.4.0 ([#81](https://github.com/ryancyq/rodiff/issues/81)) - ([0af3c02](https://github.com/ryancyq/rodiff/commit/0af3c02c358311c8b37d8f56c4447f946f1110eb)) - dependabot[bot]
+- **(deps-dev)** bump rubocop from 1.84.1 to 1.85.0 ([#82](https://github.com/ryancyq/rodiff/issues/82)) - ([16b7664](https://github.com/ryancyq/rodiff/commit/16b7664363984fff6b70c8a3ec014e57f1e12d1b)) - dependabot[bot]
 
 ---
 ## [1.2.0](https://github.com/ryancyq/rodiff/compare/v1.1.1..v1.2.0) - 2026-02-08
