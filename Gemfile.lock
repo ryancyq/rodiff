@@ -18,10 +18,14 @@ GEM
     docile (1.4.1)
     hashdiff (1.2.1)
     json (2.18.1)
+    json-schema (5.1.0)
+      addressable (~> 2.8)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
+    mcp (0.8.0)
+      json-schema (>= 4.1)
     parallel (1.27.0)
-    parser (3.3.10.1)
+    parser (3.3.10.2)
       ast (~> 2.4.1)
       racc
     prism (1.9.0)
@@ -44,10 +48,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.1)
-    rubocop (1.84.1)
+    rubocop (1.85.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
+      mcp (~> 0.6)
       parallel (~> 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
@@ -94,7 +99,7 @@ DEPENDENCIES
   rake (~> 13.3)
   rodiff!
   rspec (~> 3.12)
-  rubocop (~> 1.79)
+  rubocop (~> 1.85)
   rubocop-rake
   rubocop-rspec
   simplecov (~> 0.22.0)
