@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file. See [conven
 - **(deps-dev)** bump mcp from 0.8.0 to 0.9.2 ([#87](https://github.com/ryancyq/rodiff/issues/87)) - ([1c6b79c](https://github.com/ryancyq/rodiff/commit/1c6b79cff338af797fe1f82ba1ea68656646aa72)) - dependabot[bot]
 - **(deps-dev)** bump json from 2.18.1 to 2.19.2 ([#85](https://github.com/ryancyq/rodiff/issues/85)) - ([6832ce3](https://github.com/ryancyq/rodiff/commit/6832ce39231ccff4e6f14054a6aac06e395499b7)) - dependabot[bot]
 - **(deps-dev)** bump rubocop from 1.85.0 to 1.86.0 ([#86](https://github.com/ryancyq/rodiff/issues/86)) - ([eb58338](https://github.com/ryancyq/rodiff/commit/eb5833802941dc40a1e73e866cf4e30b033c9df6)) - dependabot[bot]
+- **(deps-dev)** bump addressable from 2.8.9 to 2.9.0 ([#89](https://github.com/ryancyq/rodiff/issues/89)) - ([1eb8cee](https://github.com/ryancyq/rodiff/commit/1eb8cee1406b72936ab3221f7873f8a153e93b5e)) - dependabot[bot]
 
 ---
 ## [1.2.0](https://github.com/ryancyq/rodiff/compare/v1.1.1..v1.2.0) - 2026-02-08
