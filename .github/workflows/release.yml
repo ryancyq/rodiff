@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
@@ -37,6 +39,15 @@ jobs:
         run: bin/bump-version ${{ env.GEM_VERSION }}
         shell: bash
 
+      - name: Generate CHANGELOG.md
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: cliff.toml
+          args: --tag v${{ env.GEM_VERSION }}
+        env:
+          OUTPUT: CHANGELOG.md
+          GITHUB_REPO: ${{ github.repository }}
+
       - name: Commit Gemfile.lock & lib/rodiff/version.rb
         uses: ryancyq/github-signed-commit@v1
         env:
@@ -45,6 +56,7 @@ jobs:
           files: |
             Gemfile.lock
             lib/rodiff/version.rb
+            CHANGELOG.md
           commit-message: Bump version for ${{ env.GEM_VERSION }}
           tag: v${{ env.GEM_VERSION }}
 
