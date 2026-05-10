@@ -7,18 +7,18 @@ All notable changes to this project will be documented in this file. See [conven
 
 ### Dependencies
 
-- bump vcr from 6.3.1 to 6.4.0 ([#81](https://github.com/ryancyq/rodiff/issues/81)) - ([0af3c02](https://github.com/ryancyq/rodiff/commit/0af3c02c358311c8b37d8f56c4447f946f1110eb)) - dependabot[bot]
-- update thor requirement from >= 1.3.2, < 1.5.0 to >= 1.3.2, < 1.6.0 ([#80](https://github.com/ryancyq/rodiff/issues/80)) - ([f9f829c](https://github.com/ryancyq/rodiff/commit/f9f829ca4f3c962e7d1ca188031f2135715e5506)) - dependabot[bot]
-- bump actions/download-artifact from 7 to 8 ([#84](https://github.com/ryancyq/rodiff/issues/84)) - ([0f11b38](https://github.com/ryancyq/rodiff/commit/0f11b383346a9e053cfee4b4215cbfa655e9821e)) - dependabot[bot]
-- bump actions/upload-artifact from 6 to 7 ([#83](https://github.com/ryancyq/rodiff/issues/83)) - ([8994b34](https://github.com/ryancyq/rodiff/commit/8994b349ba721dad50c146e5614fb0e34465e2ef)) - dependabot[bot]
-- bump rubocop from 1.84.1 to 1.85.0 ([#82](https://github.com/ryancyq/rodiff/issues/82)) - ([16b7664](https://github.com/ryancyq/rodiff/commit/16b7664363984fff6b70c8a3ec014e57f1e12d1b)) - dependabot[bot]
-- bump mcp from 0.8.0 to 0.9.2 ([#87](https://github.com/ryancyq/rodiff/issues/87)) - ([1c6b79c](https://github.com/ryancyq/rodiff/commit/1c6b79cff338af797fe1f82ba1ea68656646aa72)) - dependabot[bot]
-- bump json from 2.18.1 to 2.19.2 ([#85](https://github.com/ryancyq/rodiff/issues/85)) - ([6832ce3](https://github.com/ryancyq/rodiff/commit/6832ce39231ccff4e6f14054a6aac06e395499b7)) - dependabot[bot]
-- bump rubocop from 1.85.0 to 1.86.0 ([#86](https://github.com/ryancyq/rodiff/issues/86)) - ([eb58338](https://github.com/ryancyq/rodiff/commit/eb5833802941dc40a1e73e866cf4e30b033c9df6)) - dependabot[bot]
-- bump addressable from 2.8.9 to 2.9.0 ([#89](https://github.com/ryancyq/rodiff/issues/89)) - ([1eb8cee](https://github.com/ryancyq/rodiff/commit/1eb8cee1406b72936ab3221f7873f8a153e93b5e)) - dependabot[bot]
-- bump codecov/codecov-action from 5 to 6 ([#88](https://github.com/ryancyq/rodiff/issues/88)) - ([b40ff8a](https://github.com/ryancyq/rodiff/commit/b40ff8aa6c77af1373303ea852d23fc6566e0a77)) - dependabot[bot]
-- bump rubygems/configure-rubygems-credentials ([#91](https://github.com/ryancyq/rodiff/issues/91)) - ([42a460a](https://github.com/ryancyq/rodiff/commit/42a460ab0bdc5f5d1348d23657c2bd9b2106f4f8)) - dependabot[bot]
-- bump rake from 13.3.0 to 13.4.2 ([#90](https://github.com/ryancyq/rodiff/issues/90)) - ([8895d1d](https://github.com/ryancyq/rodiff/commit/8895d1de99468934b88331d7b8dde3b67922a702)) - dependabot[bot]
+- **(deps)** update thor requirement from >= 1.3.2, < 1.5.0 to >= 1.3.2, < 1.6.0 ([#80](https://github.com/ryancyq/rodiff/issues/80)) - ([f9f829c](https://github.com/ryancyq/rodiff/commit/f9f829ca4f3c962e7d1ca188031f2135715e5506)) - dependabot[bot]
+- **(deps)** bump actions/download-artifact from 7 to 8 ([#84](https://github.com/ryancyq/rodiff/issues/84)) - ([0f11b38](https://github.com/ryancyq/rodiff/commit/0f11b383346a9e053cfee4b4215cbfa655e9821e)) - dependabot[bot]
+- **(deps)** bump actions/upload-artifact from 6 to 7 ([#83](https://github.com/ryancyq/rodiff/issues/83)) - ([8994b34](https://github.com/ryancyq/rodiff/commit/8994b349ba721dad50c146e5614fb0e34465e2ef)) - dependabot[bot]
+- **(deps)** bump codecov/codecov-action from 5 to 6 ([#88](https://github.com/ryancyq/rodiff/issues/88)) - ([b40ff8a](https://github.com/ryancyq/rodiff/commit/b40ff8aa6c77af1373303ea852d23fc6566e0a77)) - dependabot[bot]
+- **(deps)** bump rubygems/configure-rubygems-credentials ([#91](https://github.com/ryancyq/rodiff/issues/91)) - ([42a460a](https://github.com/ryancyq/rodiff/commit/42a460ab0bdc5f5d1348d23657c2bd9b2106f4f8)) - dependabot[bot]
+- **(deps-dev)** bump vcr from 6.3.1 to 6.4.0 ([#81](https://github.com/ryancyq/rodiff/issues/81)) - ([0af3c02](https://github.com/ryancyq/rodiff/commit/0af3c02c358311c8b37d8f56c4447f946f1110eb)) - dependabot[bot]
+- **(deps-dev)** bump rubocop from 1.84.1 to 1.85.0 ([#82](https://github.com/ryancyq/rodiff/issues/82)) - ([16b7664](https://github.com/ryancyq/rodiff/commit/16b7664363984fff6b70c8a3ec014e57f1e12d1b)) - dependabot[bot]
+- **(deps-dev)** bump mcp from 0.8.0 to 0.9.2 ([#87](https://github.com/ryancyq/rodiff/issues/87)) - ([1c6b79c](https://github.com/ryancyq/rodiff/commit/1c6b79cff338af797fe1f82ba1ea68656646aa72)) - dependabot[bot]
+- **(deps-dev)** bump json from 2.18.1 to 2.19.2 ([#85](https://github.com/ryancyq/rodiff/issues/85)) - ([6832ce3](https://github.com/ryancyq/rodiff/commit/6832ce39231ccff4e6f14054a6aac06e395499b7)) - dependabot[bot]
+- **(deps-dev)** bump rubocop from 1.85.0 to 1.86.0 ([#86](https://github.com/ryancyq/rodiff/issues/86)) - ([eb58338](https://github.com/ryancyq/rodiff/commit/eb5833802941dc40a1e73e866cf4e30b033c9df6)) - dependabot[bot]
+- **(deps-dev)** bump addressable from 2.8.9 to 2.9.0 ([#89](https://github.com/ryancyq/rodiff/issues/89)) - ([1eb8cee](https://github.com/ryancyq/rodiff/commit/1eb8cee1406b72936ab3221f7873f8a153e93b5e)) - dependabot[bot]
+- **(deps-dev)** bump rake from 13.3.0 to 13.4.2 ([#90](https://github.com/ryancyq/rodiff/issues/90)) - ([8895d1d](https://github.com/ryancyq/rodiff/commit/8895d1de99468934b88331d7b8dde3b67922a702)) - dependabot[bot]
 
 ---
 ## [1.2.0](https://github.com/ryancyq/rodiff/compare/v1.1.1..v1.2.0) - 2026-02-08
