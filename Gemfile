@@ -7,7 +7,7 @@ gemspec
 gem "thor", "~> 1.5.0"
 
 group :development, :test do
-  gem "rake", "~> 13.3"
+  gem "rake", "~> 13.4"
   gem "rspec", "~> 3.12"
 
   gem "simplecov", "~> 0.22.0", require: false
