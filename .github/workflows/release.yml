@@ -24,23 +24,19 @@ jobs:
     timeout-minutes: 3
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "4"
           bundler: latest
 
-      - name: Bump version ${{ env.GEM_VERSION }}
-        run: bin/bump-version ${{ env.GEM_VERSION }}
+      - run: bin/bump-version ${{ env.GEM_VERSION }}
         shell: bash
 
-      - name: Generate CHANGELOG.md
-        uses: orhun/git-cliff-action@v4
+      - uses: orhun/git-cliff-action@v4
         with:
           config: cliff.toml
           args: --tag v${{ env.GEM_VERSION }}
@@ -48,8 +44,7 @@ jobs:
           OUTPUT: CHANGELOG.md
           GITHUB_REPO: ${{ github.repository }}
 
-      - name: Commit Gemfile.lock & lib/rodiff/version.rb
-        uses: ryancyq/github-signed-commit@v1
+      - uses: ryancyq/github-signed-commit@v1
         env:
           GH_TOKEN: ${{ github.token }}
         with:
@@ -60,9 +55,7 @@ jobs:
           commit-message: Bump version for ${{ env.GEM_VERSION }}
           tag: v${{ env.GEM_VERSION }}
 
-      - name: Package gems
-        run: |
-          bundle exec rake package
+      - run: bundle exec rake package
         shell: bash
 
       - name: Configure RubyGems trusted publishing credentials
