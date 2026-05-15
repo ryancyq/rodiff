@@ -15,7 +15,50 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: 
+        ruby-version:
+          - "2.7"
+          - "3.0"
+          - "3.1"
+          - "3.2"
+          - "3.3"
+          - "3.4"
+          - "4.0"
+          - "head"
+        include:
+          - { ruby-version: "2.7", rubygems: "3.4.22" } # last version to support Ruby 2.7
+    timeout-minutes: 3
+
+    steps:
+      - uses: actions/checkout@v6
+
+        # https://bundler.io/blog/2018/01/17/making-gem-development-a-little-better.html
+      - run: rm Gemfile.lock
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          rubygems: ${{ matrix.rubygems || 'latest' }}
+          bundler: latest
+          bundler-cache: true
+
+      - run: bundle exec rake coverage:run
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: "coverage-ruby-${{ matrix.ruby-version }}"
+          path: coverage/ruby-*
+          include-hidden-files: true
+          retention-days: 1
+
+  tests-coverage:
+    name: "CodeCov / Ruby ${{ matrix.ruby-version }}"
+    needs: [tests]
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.ruby-version == 'head' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version:
           - "2.7"
           - "3.0"
           - "3.1"
@@ -28,18 +71,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-
-        # https://bundler.io/blog/2018/01/17/making-gem-development-a-little-better.html
-      - run: rm Gemfile.lock
-
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/download-artifact@v8
         with:
-          ruby-version: ${{ matrix.ruby-version }}
-          rubygems: 3.4.22 # last version to support Ruby 2.7
-          bundler: latest
-          bundler-cache: true
+          name: "coverage-ruby-${{ matrix.ruby-version }}"
+          path: coverage
 
-      - run: bundle exec rake spec
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v6
+        with:
+          directory: coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: "ruby-${{ matrix.ruby-version }}"
+          fail_ci_if_error: true
 
   bundler-user-journey:
     name: "Bundler / OS ${{ matrix.os }}"
@@ -53,7 +96,6 @@ jobs:
           - windows
     steps:
       - uses: actions/checkout@v6
-
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "4"
@@ -75,7 +117,6 @@ jobs:
           - windows
     steps:
       - uses: actions/checkout@v6
-
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "4"
