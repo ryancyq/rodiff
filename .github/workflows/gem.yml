@@ -45,86 +45,28 @@ jobs:
           path: pkg
           retention-days: 1
 
-  vanilla-install:
+  install:
+    name: "Install on ${{ matrix.platform }}"
     needs: [package]
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: ruby,           os: ubuntu-latest,  ruby-version: "4",   verify: "(rodiff 2>&1 || true) | fgrep 'ERROR: Cannot find the odiff executable'" }
+          - { platform: x86_64-linux,   os: ubuntu-latest,  ruby-version: "4",   verify: "rodiff --help" }
+          - { platform: x86_64-darwin,  os: macos-15-intel, ruby-version: "4",   verify: "rodiff --help" }
+          - { platform: arm64-darwin,   os: macos-26,       ruby-version: "4",   verify: "rodiff --help" }
+          - { platform: x64-mingw32,    os: windows-latest, ruby-version: "3.0", verify: "rodiff --help" }
+          - { platform: x64-mingw-ucrt, os: windows-latest, ruby-version: "4",   verify: "rodiff --help" }
     steps:
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "4"
+          ruby-version: ${{ matrix.ruby-version }}
       - uses: actions/download-artifact@v8
         with:
-          name: gem-ruby
+          name: "gem-${{ matrix.platform }}"
           path: pkg
       - run: "gem install pkg/rodiff-*.gem"
-      - run: "rodiff 2>&1 | fgrep 'ERROR: Cannot find the odiff executable'"
-
-  linux-install:
-    needs: [package]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "4"
-      - uses: actions/download-artifact@v8
-        with:
-          name: gem-x86_64-linux
-          path: pkg
-      - run: "gem install pkg/rodiff-*.gem"
-      - run: "rodiff --help"
-
-  darwin-x86_64-install:
-    needs: [package]
-    runs-on: macos-15-intel
-    steps:
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "4"
-      - uses: actions/download-artifact@v8
-        with:
-          name: gem-x86_64-darwin
-          path: pkg
-      - run: "gem install pkg/rodiff-*.gem"
-      - run: "rodiff --help"
-
-  darwin-arm64-install:
-    needs: [package]
-    runs-on: macos-26
-    steps:
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "4"
-      - uses: actions/download-artifact@v8
-        with:
-          name: gem-arm64-darwin
-          path: pkg
-      - run: "gem install pkg/rodiff-*.gem"
-      - run: "rodiff --help"
-
-  windows-install:
-    needs: [package]
-    runs-on: windows-latest
-    steps:
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.0"
-      - uses: actions/download-artifact@v8
-        with:
-          name: gem-x64-mingw32
-          path: pkg
-      - run: "gem install pkg/rodiff-*.gem"
-      - run: "rodiff --help"
-
-  windows-ucrt-install:
-    needs: [package]
-    runs-on: windows-latest
-    steps:
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "4"
-      - uses: actions/download-artifact@v8
-        with:
-          name: gem-x64-mingw-ucrt
-          path: pkg
-      - run: "gem install pkg/rodiff-*.gem"
-      - run: "rodiff --help"
+      - run: ${{ matrix.verify }}
+        shell: bash
