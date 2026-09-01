@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [1.2.5](https://github.com/ryancyq/rodiff/compare/v1.2.4..v1.2.5) - 2026-09-01
+
+### Dependencies
+
+- **(deps)** bump actions/checkout from 6 to 7 ([#97](https://github.com/ryancyq/rodiff/issues/97)) - ([1440e05](https://github.com/ryancyq/rodiff/commit/1440e05680a24924f8f4b27e8e169a2d14f6b2f3)) - dependabot[bot]
+- **(deps)** bump rubygems/configure-rubygems-credentials ([#95](https://github.com/ryancyq/rodiff/issues/95)) - ([658d4d8](https://github.com/ryancyq/rodiff/commit/658d4d8f44c0314103822cd025503f400f04250a)) - dependabot[bot]
+- **(deps)** bump codecov/codecov-action from 6 to 7 ([#94](https://github.com/ryancyq/rodiff/issues/94)) - ([9a0b331](https://github.com/ryancyq/rodiff/commit/9a0b331403a801d14c497365f50d9e9692fb3d9a)) - dependabot[bot]
+- **(deps)** bump actions/setup-node from 6 to 7 ([#101](https://github.com/ryancyq/rodiff/issues/101)) - ([d5eb3ab](https://github.com/ryancyq/rodiff/commit/d5eb3ab91f134d0cb3df211280f29ebb00423bbf)) - dependabot[bot]
+- **(deps-dev)** bump rubocop-rspec from 3.9.0 to 3.10.2 ([#93](https://github.com/ryancyq/rodiff/issues/93)) - ([99c5397](https://github.com/ryancyq/rodiff/commit/99c53972d816755c71a7c688e4bfba7d8e8f945e)) - dependabot[bot]
+- **(deps-dev)** bump simplecov-cobertura from 3.1.0 to 3.2.0 ([#96](https://github.com/ryancyq/rodiff/issues/96)) - ([f2ce4e4](https://github.com/ryancyq/rodiff/commit/f2ce4e47ef288784897167c981f150362f9633c5)) - dependabot[bot]
+- **(deps-dev)** bump json from 2.19.8 to 2.19.9 ([#102](https://github.com/ryancyq/rodiff/issues/102)) - ([6df9d61](https://github.com/ryancyq/rodiff/commit/6df9d61a0350dacd7aeddbb00057556864610960)) - dependabot[bot]
+
+### Documentation
+
+- update readme with rake task cmds - ([bdcba54](https://github.com/ryancyq/rodiff/commit/bdcba5404fa318f745f182b9259069dd8f66c86f)) - Ryan Chang
+
+---
 ## [1.2.1](https://github.com/ryancyq/rodiff/compare/v1.2.0..v1.2.1) - 2026-05-10
 
 ### Dependencies
